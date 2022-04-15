@@ -31,9 +31,6 @@ class Course(models.Model):
         blank=False,
         null=False,
         default=BASIC)
-
-    class Meta:
-        verbose_name_plural = 'courses'
     
     def __str__(self) -> str:
         if len(self.description) > 50:
