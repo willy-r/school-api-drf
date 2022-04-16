@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from school.models import Student, Course
+from school.models import Student, Course, Enrollment
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -14,4 +14,11 @@ class CourseSerializer(serializers.ModelSerializer):
     """The Course serializer, that translate from JSON to Python, and vice-versa."""
     class Meta:
         model = Course
-        fields = '__all__'  # Gets all fields.
+        fields = '__all__'
+
+
+class EnrollmentSerializer(serializers.ModelSerializer):
+    """The Enrollment serializer, that translate from JSON to Python, and vice-versa."""
+    class Meta:
+        model = Enrollment
+        fields = '__all__'

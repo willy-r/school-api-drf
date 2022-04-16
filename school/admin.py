@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from school.models import Student, Course, Enroll
+from school.models import Student, Course, Enrollment
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -18,12 +18,12 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ('course_code',)
 
 
-class EnrollAdmin(admin.ModelAdmin):
-    """Admin view for Enroll model."""
+class EnrollmentAdmin(admin.ModelAdmin):
+    """Admin view for Enrollment model."""
     list_display = ('id', 'student', 'course', 'period')
     list_display_links = ('id',)
 
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Course, CourseAdmin)
-admin.site.register(Enroll, EnrollAdmin)
+admin.site.register(Enrollment, EnrollmentAdmin)

@@ -39,7 +39,7 @@ class Course(models.Model):
         return self.description
 
 
-class Enroll(models.Model):
+class Enrollment(models.Model):
     """Student enrolls Course."""
     MORNING = 'M'
     AFTERNOON = 'A'
