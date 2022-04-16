@@ -17,7 +17,7 @@ class Course(models.Model):
     BASIC = 'B'
     INTERMEDIATE = 'I'
     ADVANCED = 'A'
-    NIVEL = (
+    LEVELS = (
         (BASIC, 'Basic'),
         (INTERMEDIATE, 'Intermediate'),
         (ADVANCED, 'Advanced'),
@@ -27,7 +27,7 @@ class Course(models.Model):
     description = models.CharField(max_length=100)
     level = models.CharField(
         max_length=1, 
-        choices=NIVEL,
+        choices=LEVELS,
         blank=False,
         null=False,
         default=BASIC)
@@ -37,3 +37,24 @@ class Course(models.Model):
             return self.description[:50]
         
         return self.description
+
+
+class Enroll(models.Model):
+    """Student enrolls Course."""
+    MORNING = 'M'
+    AFTERNOON = 'A'
+    NIGHTLY = 'N'
+    PERIODS = (
+        (MORNING, 'Morning'),
+        (AFTERNOON, 'Afternoon'),
+        (NIGHTLY, 'Nightly'),
+    )
+
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    period = models.CharField(
+        max_length=1, 
+        choices=PERIODS,
+        blank=False,
+        null=False,
+        default=MORNING)
