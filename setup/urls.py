@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from setup.routers import router
+from school.views import ListStudentEnrollments
 
 urlpatterns = [
     # Django Rest Framework
     path('', include(router.urls)),
+    path('student/<int:pk>/enrollments', ListStudentEnrollments.as_view()),
+
     # Django admin.
     path('admin/', admin.site.urls),
 ]

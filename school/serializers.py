@@ -22,3 +22,16 @@ class EnrollmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enrollment
         fields = '__all__'
+
+
+class ListStudentEnrollmentsSerializer(serializers.ModelSerializer):
+    """Enrollments of a student serializer, translate from JSON to Python, and vice-versa."""
+    course = serializers.ReadOnlyField(source='course.description')
+    period = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Enrollment
+        fields = ['course', 'period']
+    
+    def get_period(self, obj):
+        return obj.get_period_display()
