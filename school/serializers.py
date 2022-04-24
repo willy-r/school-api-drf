@@ -7,7 +7,7 @@ class StudentSerializer(serializers.ModelSerializer):
     """The Student serializer, that translate from JSON to Python, and vice-versa."""
     class Meta:
         model = Student
-        fields = ['id', 'name', 'rg', 'cpf', 'birth_date']
+        exclude = ['cellphone']
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -44,3 +44,10 @@ class ListCourseStudentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enrollment
         fields = ['student_name']
+
+
+class StudentSerializerV2(serializers.ModelSerializer):
+    """The Student serializer but for API version 2."""
+    class Meta:
+        model = Student
+        fields = '__all__'

@@ -9,10 +9,15 @@ from school import serializers
 class StudentViewSet(viewsets.ModelViewSet):
     """Viewset for students."""
     queryset = Student.objects.all().order_by('id')
-    serializer_class = serializers.StudentSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-
+    
+    def get_serializer_class(self):
+        """Defines serializer class based on API version."""
+        if self.request.version == 'v2':
+            return serializers.StudentSerializerV2
+        
+        return serializers.StudentSerializer
 
 class CourseViewSet(viewsets.ModelViewSet):
     """Viewset for courses."""
