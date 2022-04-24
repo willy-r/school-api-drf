@@ -8,7 +8,7 @@ from school import serializers
 
 class StudentViewSet(viewsets.ModelViewSet):
     """Viewset for students."""
-    queryset = Student.objects.all()
+    queryset = Student.objects.all().order_by('id')
     serializer_class = serializers.StudentSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -16,7 +16,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 
 class CourseViewSet(viewsets.ModelViewSet):
     """Viewset for courses."""
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by('id')
     serializer_class = serializers.CourseSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -24,7 +24,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
     """Viewset for enrollments."""
-    queryset = Enrollment.objects.all()
+    queryset = Enrollment.objects.all().order_by('id')
     serializer_class = serializers.EnrollmentSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -38,7 +38,8 @@ class ListStudentEnrollments(generics.ListAPIView):
 
     def get_queryset(self):
         """Returns queryset with all enrollments of a student."""
-        queryset = Enrollment.objects.filter(student_id=self.kwargs['pk'])
+        queryset = Enrollment.objects.filter(
+            student_id=self.kwargs['pk']).order_by('id')
         return queryset
 
 
@@ -50,5 +51,6 @@ class ListCourseStudents(generics.ListAPIView):
 
     def get_queryset(self):
         """Returns queryset with all students of a course."""
-        queryset = Enrollment.objects.filter(course_id=self.kwargs['pk'])
+        queryset = Enrollment.objects.filter(
+            course_id=self.kwargs['pk']).order_by('id')
         return queryset
