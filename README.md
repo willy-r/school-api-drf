@@ -5,7 +5,16 @@ A school REST API made with Django Rest Framework.
 
 ## Endpoints
 
-> Soon...
+CRUD for Student entity: `/students`
+CRUD for Course entity: `/courses`
+CRUD for Enrollment entity: `/enrollments`
+
+### Special endpoints
+
+| Method | Route | Description |
+| ------ | ----- | ----------- |
+| **GET** | `/student/{id}/enrollments` | Gets all enrollments of a student by {id} |
+| **GET** | `/course/{id}/enrollments` | Gets all enrollments of a course by {id} |
 
 
 ## Running locally
