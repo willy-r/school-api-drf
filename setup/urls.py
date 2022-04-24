@@ -30,8 +30,8 @@ router.register('enrollments', views.EnrollmentViewSet, basename='Enrollments')
 urlpatterns = [
     # API
     path('', include(router.urls)),
-    path('student/<int:pk>/enrollments', views.ListStudentEnrollments.as_view()),
-    path('course/<int:pk>/enrollments', views.ListCourseStudents.as_view()),
+    path('students/<int:pk>/enrollments', views.ListStudentEnrollments.as_view()),
+    path('courses/<int:pk>/enrollments', views.ListCourseStudents.as_view()),
 
     # Django admin.
     path('admin/', admin.site.urls),

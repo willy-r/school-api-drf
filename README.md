@@ -13,8 +13,8 @@ CRUD for Enrollment entity: `/enrollments`
 
 | Method | Route | Description |
 | ------ | ----- | ----------- |
-| **GET** | `/student/{id}/enrollments` | Gets all enrollments of a student by {id} |
-| **GET** | `/course/{id}/enrollments` | Gets all enrollments of a course by {id} |
+| **GET** | `/students/{id}/enrollments` | Gets all enrollments of a student by {id} |
+| **GET** | `/courses/{id}/enrollments` | Gets all enrollments of a course by {id} |
 
 
 ## Running locally
