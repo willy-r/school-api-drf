@@ -1,6 +1,6 @@
 from rest_framework import viewsets, generics
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
 from school.models import Student, Course, Enrollment
 from school import serializers
@@ -10,7 +10,7 @@ class StudentViewSet(viewsets.ModelViewSet):
     """Viewset for students."""
     queryset = Student.objects.all().order_by('id')
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     
     def get_serializer_class(self):
         """Defines serializer class based on API version."""
@@ -24,7 +24,7 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all().order_by('id')
     serializer_class = serializers.CourseSerializer
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
@@ -32,7 +32,7 @@ class EnrollmentViewSet(viewsets.ModelViewSet):
     queryset = Enrollment.objects.all().order_by('id')
     serializer_class = serializers.EnrollmentSerializer
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 
 class ListStudentEnrollments(generics.ListAPIView):
