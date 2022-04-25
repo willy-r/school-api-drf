@@ -65,7 +65,9 @@ You must have **Node** installed on your machine.
 
 Define the following envs:
 
-`REACT_APP_BASE_API_URL` - Base API URL to make requests
+`REACT_APP_BASE_API_URL` - Base API URL to make requests  
+`REACT_APP_API_USERNAME` - Your Django admin account username to authenticate on API  
+`REACT_APP_API_PASSWORD` - Your Django admin account password to authenticate on API
 
 Clone this repo and go to front-end directory:
 
@@ -88,7 +90,11 @@ $ npm start # npm
 $ yarn start # yarn
 ```
 
+Access app:
+
+[`http://localhost:3000`](http://localhost:3000)
+
 
 ## Running locally with docker-compose
 
-
+> Soon...
