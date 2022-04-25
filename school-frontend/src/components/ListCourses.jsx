@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 function ListCourses() {
   const [courses, setCourses] = useState([]);
@@ -7,13 +7,15 @@ function ListCourses() {
   useEffect(() => {
     const username = process.env.REACT_APP_API_USERNAME;
     const password = process.env.REACT_APP_API_PASSWORD;
-    
+
     const headers = new Headers();
-    const authorizationToken = Buffer.from(`${username}:${password}`).toString('base64');
-    headers.set('Authorization', `Basic ${authorizationToken}`)
-    
+    const authorizationToken = Buffer.from(`${username}:${password}`).toString(
+      "base64"
+    );
+    headers.set("Authorization", `Basic ${authorizationToken}`);
+
     fetch(`${process.env.REACT_APP_BASE_API_URL}/courses/`, {
-        headers: headers,
+      headers: headers,
     })
       .then((res) => {
         if (!res.ok) {

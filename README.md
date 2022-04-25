@@ -93,8 +93,3 @@ $ yarn start # yarn
 Access app:
 
 [`http://localhost:3000`](http://localhost:3000)
-
-
-## Running locally with docker-compose
-
-> Soon...
