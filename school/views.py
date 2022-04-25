@@ -25,6 +25,7 @@ class EnrollmentViewSet(viewsets.ModelViewSet):
     """Viewset for enrollments."""
     queryset = Enrollment.objects.all().order_by('id')
     serializer_class = serializers.EnrollmentSerializer
+    http_method_names = ['get', 'post', 'put', 'patch']
 
 
 class ListStudentEnrollments(generics.ListAPIView):
