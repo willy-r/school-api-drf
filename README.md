@@ -25,11 +25,11 @@ Define the following envs:
 
 `SECRET_KEY` - The SECRET KEY for your Django project
 
-Clone this repo and go to project root directory:
+Clone this repo and go to back-end directory:
 
 ```bash
 $ git clone https://github.com/willy-r/school-api-drf.git
-$ cd school-api-drf
+$ cd school-api-drf/school-backend
 ```
 
 Create virtual enviroment and activate it:
@@ -61,4 +61,34 @@ Access API:
 
 ## Running front-end locally
 
-> Soon...
+You must have **Node** installed on your machine.
+
+Define the following envs:
+
+`REACT_APP_BASE_API_URL` - Base API URL to make requests
+
+Clone this repo and go to front-end directory:
+
+```bash
+$ git clone https://github.com/willy-r/school-api-drf.git
+$ cd school-api-drf/school-frontend
+```
+
+Install dependencies:
+
+```bash
+$ npm install # npm
+$ yarn install # yarn
+```
+
+Run development server:
+
+```bash
+$ npm start # npm
+$ yarn start # yarn
+```
+
+
+## Running locally with docker-compose
+
+
