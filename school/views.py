@@ -1,4 +1,6 @@
+import status
 from rest_framework import viewsets, generics
+from rest_framework.response import Response
 
 from school.models import Student, Course, Enrollment
 from school import serializers
@@ -19,6 +21,18 @@ class CourseViewSet(viewsets.ModelViewSet):
     """Viewset for courses."""
     queryset = Course.objects.all().order_by('id')
     serializer_class = serializers.CourseSerializer
+
+    def create(self, request):
+        """Creates a new course, defining Location header."""
+        serializer = self.serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            new_course_id = serializer.data['id']
+            response = Response(serializer.data, status=status.HTTP_201_CREATED)
+            response['Location'] = f'{request.build_absolute_uri()}{new_course_id}'
+            return response
 
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
