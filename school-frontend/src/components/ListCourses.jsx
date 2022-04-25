@@ -5,7 +5,16 @@ function ListCourses() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_API_URL}/courses`)
+    const username = process.env.REACT_APP_API_USERNAME;
+    const password = process.env.REACT_APP_API_PASSWORD;
+    
+    const headers = new Headers();
+    const authorizationToken = Buffer.from(`${username}:${password}`).toString('base64');
+    headers.set('Authorization', `Basic ${authorizationToken}`)
+    
+    fetch(`${process.env.REACT_APP_BASE_API_URL}/courses/`, {
+        headers: headers,
+    })
       .then((res) => {
         if (!res.ok) {
           // Something went wrong, do whatever you want with it (good luck).
@@ -13,7 +22,7 @@ function ListCourses() {
 
         return res.json();
       })
-      .then((data) => setCourses(data))
+      .then((data) => setCourses(data.results))
       .catch((err) => console.error(err))
       .finally(() => setLoaded(true));
   }, []);
