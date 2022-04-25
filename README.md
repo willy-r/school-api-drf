@@ -1,6 +1,6 @@
 # School API - Django Rest Framework
 
-A school REST API made with Django Rest Framework.
+A school REST API made with Django Rest Framework and being consumed by a React front-end app.
 
 
 ## Endpoints
@@ -17,7 +17,7 @@ CRUD for Enrollment entity: `/enrollments`
 | **GET** | `/courses/{id}/enrollments` | Gets all enrollments of a course by {id} |
 
 
-## Running locally
+## Running back-end locally
 
 You need to have **Python 3.7.4+**
 
@@ -57,3 +57,8 @@ $ (venv) python manage.py runserver
 Access API:
 
 [`http://localhost:8000`](http://localhost:8000)
+
+
+## Running front-end locally
+
+> Soon...
